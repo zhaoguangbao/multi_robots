@@ -8,6 +8,9 @@ Panels:
         - /Status1
         - /RobotModel1
         - /RobotModel2
+        - /RobotModel3
+        - /RobotModel3/Status1
+        - /Axes1
       Splitter Ratio: 0.5
     Tree Height: 435
   - Class: rviz/Selection
@@ -62,58 +65,54 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        robot1/base:
+        robot1base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        robot1/base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot1/ee_link:
+        robot1base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot1/forearm_link:
+        robot1ee_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot1/shoulder_link:
+        robot1forearm_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot1/tool0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        robot1/upper_arm_link:
+        robot1shoulder_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot1/wrist_1_link:
+        robot1tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        robot1upper_arm_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot1/wrist_2_link:
+        robot1wrist_1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot1/wrist_3_link:
+        robot1wrist_2_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        world:
+        robot1wrist_3_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot1/robot_description
       TF Prefix: ""
@@ -130,64 +129,131 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        robot2/base:
+        robot2base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        robot2/base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot2/ee_link:
+        robot2base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot2/forearm_link:
+        robot2ee_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot2/shoulder_link:
+        robot2forearm_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot2/tool0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        robot2/upper_arm_link:
+        robot2shoulder_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot2/wrist_1_link:
+        robot2tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        robot2upper_arm_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot2/wrist_2_link:
+        robot2wrist_1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robot2/wrist_3_link:
+        robot2wrist_2_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        world:
+        robot2wrist_3_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot2/robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        robotbase:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        robotbase_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotee_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotforearm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotshoulder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robottool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        robotupper_arm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotwrist_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotwrist_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotwrist_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: RobotModel
+      Robot Description: /robot/robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/Axes
+      Enabled: false
+      Length: 1
+      Name: Axes
+      Radius: 0.100000001
+      Reference Frame: <Fixed Frame>
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -213,7 +279,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 9.22516918
+      Distance: 8.19225407
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1

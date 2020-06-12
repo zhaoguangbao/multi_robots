@@ -1,0 +1,32 @@
+digraph G {
+node [shape=box];
+"robotbase_link" [label="robotbase_link"];
+"robotbase" [label="robotbase"];
+"robotshoulder_link" [label="robotshoulder_link"];
+"robotupper_arm_link" [label="robotupper_arm_link"];
+"robotforearm_link" [label="robotforearm_link"];
+"robotwrist_1_link" [label="robotwrist_1_link"];
+"robotwrist_2_link" [label="robotwrist_2_link"];
+"robotwrist_3_link" [label="robotwrist_3_link"];
+"robotee_link" [label="robotee_link"];
+"robottool0" [label="robottool0"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"robotbase_link" -> "robotbase_link-base_fixed_joint" [label="xyz: 0 0 0 \nrpy: 0 0 3.14159"]
+"robotbase_link-base_fixed_joint" -> "robotbase"
+"robotbase_link" -> "robotshoulder_pan_joint" [label="xyz: 0 0 0.089159 \nrpy: 0 -0 0"]
+"robotshoulder_pan_joint" -> "robotshoulder_link"
+"robotshoulder_link" -> "robotshoulder_lift_joint" [label="xyz: 0 0.13585 0 \nrpy: 0 1.5708 -0"]
+"robotshoulder_lift_joint" -> "robotupper_arm_link"
+"robotupper_arm_link" -> "robotelbow_joint" [label="xyz: 0 -0.1197 0.425 \nrpy: 0 -0 0"]
+"robotelbow_joint" -> "robotforearm_link"
+"robotforearm_link" -> "robotwrist_1_joint" [label="xyz: 0 0 0.39225 \nrpy: 0 1.5708 -0"]
+"robotwrist_1_joint" -> "robotwrist_1_link"
+"robotwrist_1_link" -> "robotwrist_2_joint" [label="xyz: 0 0.093 0 \nrpy: 0 -0 0"]
+"robotwrist_2_joint" -> "robotwrist_2_link"
+"robotwrist_2_link" -> "robotwrist_3_joint" [label="xyz: 0 0 0.09465 \nrpy: 0 -0 0"]
+"robotwrist_3_joint" -> "robotwrist_3_link"
+"robotwrist_3_link" -> "robotee_fixed_joint" [label="xyz: 0 0.0823 0 \nrpy: 0 -0 1.5708"]
+"robotee_fixed_joint" -> "robotee_link"
+"robotwrist_3_link" -> "robotwrist_3_link-tool0_fixed_joint" [label="xyz: 0 0.0823 0 \nrpy: -1.5708 0 0"]
+"robotwrist_3_link-tool0_fixed_joint" -> "robottool0"
+}

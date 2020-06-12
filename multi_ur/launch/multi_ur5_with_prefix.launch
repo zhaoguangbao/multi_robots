@@ -10,15 +10,16 @@
         <arg name="debug" value="false"/>
     </include>
 
-    <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_ur)/rviz/config.rviz" />-->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_ur)/rviz/config.rviz" />
     <group ns="robot1">
-      <include file="$(find ur_description)/launch/ur5_upload.launch">
+      <include file="$(find ur_description)/launch/ur5_upload_with_prefix.launch">
+	<arg name="prefix" value="robot1"/>
       </include>
       <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
           args="-urdf -model robot1 -param robot_description -z 0.05"/>
 
       <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
-      <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5_position.yaml" command="load"/>
+      <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5_position_robot1.yaml" command="load"/>
       <node name="arm_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="false" output="screen"
         args="shoulder_pan_joint
@@ -29,30 +30,37 @@
               wrist_3_joint" />
 
     <node pkg="ur_teleop" type="ur_teleop_position_keyboard" name="ur_teleop_position_keyboard" launch-prefix="xterm -e">
-        <param name="str" type="string" value="robot1"/>
+        <!--<param name="robot_ns" type="string" value="robot1"/>-->
     </node>
+
+    <node pkg="tf" type="static_transform_publisher" name="world2rb1"
+        args="0 0 0 0 0 0 world robot1base_link 100" />    
 
     </group>
 
     
  
     <group ns="robot2">
-      <include file="$(find ur_description)/launch/ur5_upload.launch">
+      <include file="$(find ur_description)/launch/ur5_upload_with_prefix.launch">
+	<arg name="prefix" value="robot2"/>
       </include>
       <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
       <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
       <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
           args="-urdf -model robot2 -param robot_description -x 2 -z 0.05"/> 
       <node pkg="tf" type="static_transform_publisher" name="world2rb2"
-        args="2 0 0 0 0 0 world robot2/base_link 100" />    
+        args="2 0 0 0 0 0 world robot2base_link 100" />    
     </group>
 
 
-<include file="$(find ur_description)/launch/ur5_upload.launch"/>
+<group ns="robot">
+<include file="$(find ur_description)/launch/ur5_upload_with_prefix.launch">
+	<arg name="prefix" value="robot"/>
+</include>
       <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-urdf -model -param robot_description -y 2 -z 0.05"/>
+          args="-urdf -model robot -param robot_description -y 2 -z 0.05"/>
       <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
-      <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5_position.yaml" command="load"/>
+      <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5_position_robot.yaml" command="load"/>
       <node name="arm_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="false" output="screen"
         args="shoulder_pan_joint
@@ -63,7 +71,11 @@
               wrist_3_joint" />
 
 <node pkg="ur_teleop" type="ur_teleop_position_keyboard" name="ur_teleop_position_keyboard" launch-prefix="xterm -e">
+	<!--<param name="robot_ns" type="string" value="robot"/>-->
 </node>
+<node pkg="tf" type="static_transform_publisher" name="world2rb"
+        args="0 2 0 0 0 0 world robotbase_link 100" />    
+</group>
   
 
 </launch>
