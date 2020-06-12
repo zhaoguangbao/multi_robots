@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+<!--<node pkg="ur_teleop" type="test_param" name="test_param" output="screen">-->
+<node pkg="ur_teleop" type="test_param" name="test_param" launch-prefix="xterm -e">
+<param name="parking_x" type="double" value="100.0"/>
+<param name="parking_y" type="double" value="600.0"/>
+<param name="parking_y" type="double" value="600.0"/>
+<!--<param name="str" type="string" value="robot1"/>-->
+</node>
+</launch>
